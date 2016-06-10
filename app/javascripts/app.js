@@ -20,14 +20,9 @@ function refreshBalance() {
   getTokenBalance(accounts[1],"tBalance2");
 
 
-  meta.getHoldersBalance.call().then(function(value) {
-    var balance_element = document.getElementById("outBalance");
-    balance_element.innerHTML = value.valueOf();
-
-  }).catch(function(e) {
-    console.log(e);
-    setStatus("Error getting balance; see log.");
-  });
+  getHoldersBalance();
+  getTotalTokens();
+  getHoldersQuantity();
 
   holder0();
   holder1();
@@ -38,9 +33,25 @@ function refreshBalance() {
   //var outBalance_element = document.getElementById("outBalance");
   //outBalance_element.innerHTML = balOut;
 
-
-
   document.getElementById("mainContract").innerHTML=meta.address;
+
+};
+
+function getHoldersBalance() {
+  var meta = MyToken.deployed();
+
+  meta.getHoldersBalance.call().then(function(value) {
+    var balance_element = document.getElementById("outBalance");
+    balance_element.innerHTML = value.valueOf();
+
+  }).catch(function(e) {
+    console.log(e);
+    setStatus("Error getting balance; see log.");
+  });
+}
+
+function getTotalTokens() {
+  var meta = MyToken.deployed();
 
   meta.getTotalSupply.call().then(function(value) {
     document.getElementById("totalSupply").innerHTML=value;
@@ -48,7 +59,10 @@ function refreshBalance() {
     console.log(e);
     setStatus("Error getting balance; see log.");
   });
+}
 
+function getHoldersQuantity() {
+  var meta = MyToken.deployed();
   meta.getHoldersSize.call().then(function(value) {
     var balance_element = document.getElementById("holders");
     balance_element.innerHTML = value.valueOf();
@@ -57,8 +71,7 @@ function refreshBalance() {
     console.log(e);
     setStatus("Error getting balance; see log.");
   });
-
-};
+}
 
 function sendEther() {
   var meta = MyToken.deployed();
@@ -74,8 +87,6 @@ function sendEther() {
         from: sender,
         value:web3.toWei(amount,'ether'),
         to: meta.address,
-        //data: web3.fromAscii( document.getElementById('message').value )
-        //data: web3.fromAscii( 'TEST' )
         data: '0x0000000000000000000000000000000000000000'
       },
       function(error, result){
@@ -156,7 +167,6 @@ function holder0() {
 }
 
 function holder1() {
-
     var meta = MyToken.deployed();
 
     meta.getHolder1.call(outAccount, {from: outAccount}).then(function(value) {
