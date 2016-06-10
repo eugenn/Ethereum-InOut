@@ -22,6 +22,7 @@ contract Holders {
     // fee for contract execution
     uint fee = 500 finney;
 
+    event Award(address trg, uint amount);
 
     function appendHolder(address holder) {
         holders.push(holder);
@@ -35,7 +36,9 @@ contract Holders {
         uint award = (this.balance - fee) / tokensBalance;
 
         for (var i = 0; i < holders.length; i++ ) {
+            address adr = holders[i];
             holders[i].send(award);
+            Award(adr, award);
         }
 
     }
@@ -59,7 +62,7 @@ contract MyToken is mortal {
     // decimal places
     uint8 public decimals;
     // token price
-    uint8 public price = 10;
+    uint8 public price = 2;
     // total tokens
     uint256 public totalSupply = 0;
 
@@ -69,6 +72,9 @@ contract MyToken is mortal {
     address public inWallet;
 
     Holders public holders;
+
+    event Deposit(address from, address to, uint amount);
+    event Token(address trg, uint amount);
 
 
     function MyToken (
@@ -143,11 +149,14 @@ contract MyToken is mortal {
         totalSupply += token;
         balanceOf[msg.sender] += token;
 
+        Token(msg.sender, token);
         // add a token holder to the array
         holders.appendHolder(msg.sender);
 
         // send ether to input wallet
         inWallet.send(msg.value);
+
+        Deposit(msg.sender, inWallet, msg.value);
     }
 
 
