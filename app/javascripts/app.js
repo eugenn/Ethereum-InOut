@@ -94,7 +94,6 @@ function sendEther() {
           console.log(result);
           refreshBalance();
         }
-
         else
           setStatus("Error sending coin; see log.")
       }
@@ -143,7 +142,7 @@ function setBalanceFromAddr(account, elBalance) {
 function getTokenBalance(account, elBalance) {
   var meta = MyToken.deployed();
 
-  meta.getBalance.call(account, {from: account}).then(function(value) {
+  meta.getTokenBalance.call(account, {from: account}).then(function(value) {
     var balance_element = document.getElementById(elBalance);
     balance_element.innerHTML = value.valueOf();
 
