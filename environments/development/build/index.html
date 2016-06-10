@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MetaCoin - Default Truffle App</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="./app.css" rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <h3>User1 have <span class="black"><span id="eBalance1"></span> Ether </span> <span id="tBalance1"></span> Tokens</span></h3>
+  <h3>User2 have <span class="black"><span id="eBalance2"></span> Ether </span> <span id="tBalance2"></span> Tokens</span></h3>
+
+  <h3>InWallet <span class="black"><span id="inBalance"></span> Ether</span></h3>
+  <h3>OutWallet <span class="black"><span id="outBalance"></span> Ether</span></h3>
+  <h3>Tokens created <span class="black"><span id="totalSupply"></span> Tokens</span></h3>
+  <h3>Holders <span class="black"><span id="holders"></span> Holders</span></h3>
+
+  <br>
+  <h1>Send</h1>
+  <br><label for="amount">Amount:</label><input type="text" id="amount" placeholder="e.g., 95"/>
+  <br><label for="sender">Usr Address:</label><input type="text" id="sender" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"/>
+  <!--<br><label for="receiver">To Address:</label><input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"/>-->
+  <br><br><button id="send" onclick="sendEther()">Send Ether</button>
+
+  <br>
+  <h1>Award holders</h1>
+  <br><br><button id="award" onclick="award()">Send awards</button>
+
+
+  <!--<br><label for="inwallet">In wallet</label><input type="text" id="inwallet" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>-->
+  <!--<br><br><button id="set" onclick="setInwallet()">Set InWallet</button></input>-->
+  <h6>User1 address: <span class="black"><span id="u1Addr">0x56b963c53cc8959e3c92afeedbb7ed8692643ad7</span></span></h6>
+  <h6>User2 address: <span class="black"><span id="u2Addr">0x7250008f96e727a5e9ae20a3a85d48b1b47f3670</span></span></h6>
+  <h6>MyToken contract address: <span class="black"><span id="mainContract"></span></span></h6>
+  <h6>inWallet address: <span class="black"><span id="inAddress"></span></span></h6>
+  <h6>OutManager address: <span class="black"><span id="outManagerAddr"></span></span></h6>
+
+  <h6>h0 address: <span class="black"><span id="holder0"></span></span></h6>
+  <h6>h1 address: <span class="black"><span id="holder1"></span></span></h6>
+  <!--h6>inWallet balance <span class="black"><span id="inBalance"></span></span></h6-->
+
+  <br><br>
+  <span id="status"></span>
+</body>
+</html>
