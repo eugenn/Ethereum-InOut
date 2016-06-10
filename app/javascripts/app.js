@@ -10,6 +10,7 @@ function setStatus(message) {
 
 function refreshBalance() {
   var meta = MyToken.deployed();
+  document.getElementById("mainContract").innerHTML=meta.address;
 
   setBalanceFromAddr(accounts[0], "eBalance1");
   setBalanceFromAddr(accounts[1], "eBalance2");
@@ -24,16 +25,13 @@ function refreshBalance() {
   getTotalTokens();
   getHoldersQuantity();
 
-  holder0();
-  holder1();
-
   //var balOut = web3.eth.getBalance(outAccount).toNumber();
   //balOut = web3.fromWei(balOut, "ether");
   //
   //var outBalance_element = document.getElementById("outBalance");
   //outBalance_element.innerHTML = balOut;
 
-  document.getElementById("mainContract").innerHTML=meta.address;
+
 
 };
 

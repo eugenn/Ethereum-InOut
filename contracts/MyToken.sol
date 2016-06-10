@@ -40,6 +40,9 @@ contract Holders {
 
     }
 
+    function getSize() returns (uint256) {
+        return holders.length;
+    }
 
     function getBalance() returns (uint) {
         return this.balance;
@@ -108,6 +111,9 @@ contract MyToken is mortal {
         return convert(getTokenBalance(addr),2);
     }
 
+    function getHoldersSize() returns (uint256) {
+        return holders.getSize();
+    }
     /**
      * Get token balance
      */
