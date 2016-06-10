@@ -58,7 +58,6 @@ function refreshBalance() {
     setStatus("Error getting balance; see log.");
   });
 
-
 };
 
 function sendEther() {
